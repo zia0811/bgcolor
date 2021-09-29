@@ -25,9 +25,7 @@
        }
 
        .btns{
-           position: fixed;
-           padding: 10px;
-           transition: 0.3s;
+           position: relative;
            top: 60px;
            width: 100%;
            margin: auto;
@@ -46,8 +44,15 @@
            opacity: 0;
        }
        .bg_img--show{opacity: 1;}
+
+       .btns{
+           position: fixed;
+           padding: 10px;
+           background-color: transparent;
+           transition: 0.3s;
+       }
        
-       .btns.bgshow {margin: auto;
+       .btns.bgshow {
          background-color: powderblue; height: 6vh;
        }
 
@@ -74,7 +79,6 @@
 <body>
   
   <div class="bg_img"></div>
-  <div class="btns bgshow"></div>
    <div class="btns">
      <button class="btn_toggle">배경색상변경</button>
      <button class="btn--reset">배경색상 리셋</button>
@@ -85,6 +89,8 @@
   <script>
     
   
+        
+    
         
     const btnToggle=document. querySelector('.btn_toggle');
         //addEventListener(이벤트, 실행함수 )
@@ -114,16 +120,21 @@
             bgContainer.classList.add('bg_img--show');
         });
 
-        const navContainer = document.querySelector('.btns')
-        document.addEventListener('scroll', function () {
-            if (window.scrollY > 100) {
-                navContainer.classList.add('bgshow');
-            }
-            else {
-                navContainer.classList.remove('bgshow');
-            }
-        })
+        
+        const navcontainer = document.querySelector('.btns')
+document.addEventListener('scroll', function () {
+  // console.log(window.scrollY);
+  if(window.scrollY > 100) {
+    navcontainer.classList.add('bgshow');
+  }else{
+  navcontainer.classList.remove('bgshow');
+}
+});
 
+        
+
+
+    
     
   </script>
 </body>
