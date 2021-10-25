@@ -24,6 +24,12 @@
            background-color: lightslategray; 
        }
 
+       .bgcolor--green{
+         background-color: teal;
+       }
+
+       .gray
+
        .btns{
            position: relative;
            top: 60px;
@@ -45,12 +51,21 @@
        }
        .bg_img--show{opacity: 1;}
 
-       .btns{
+       /* .btns{
            position: fixed;
            padding: 10px;
            background-color: transparent;
            transition: 0.3s;
-       }
+       } */
+
+       .btns {
+    top: 0;
+    width: 100vw;
+    margin: 0 auto;
+    text-align: center;
+    position: fixed;
+    padding-top: 10px;
+}
        
        .btns.bgshow {
          background-color: powderblue; height: 6vh;
@@ -85,7 +100,34 @@
   color: #3d53cc; /* 색상변경*/
 }
 
+section{
+  width: 100%;
+  text-align: center;
+}
 
+.wrapper{
+  max-width: 1200px;
+  margin: auto;
+}
+
+#home, #about, #skills, #works, #contact {
+    text-align: center;
+    padding-top: 80px;
+}
+
+h1{
+  color: skyblue;
+  font-size: 48px;
+}
+
+h2{
+  font-size: 32px;
+}
+
+h3{
+  font-size: 24px;
+  font-weight: 300;
+}
 
 
 
@@ -99,10 +141,11 @@
   
   <div class="bg_img"></div>
    <div class="btns">
-     <button class="btn_toggle">배경색상변경</button>
-     <button class="btn--reset">배경색상 리셋</button>
-     <button class="btn--bggray">배경색상변경 그레이</button>
-     <button class="btn--bgimg">배경이미지</button>
+     <button class="btn_toggle">Home</button>
+     <button class="btn--reset">About</button>
+     <button class="btn--bggray">Skills</button>
+     <button class="btn--bgimg">Works</button>
+     <button class="btn--bggreen">Contact Me</button>
    </div>
 
    <button id="go-top"><svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor"
@@ -110,6 +153,45 @@
     <path fill-rule="evenodd"
       d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
   </svg></button>
+  <section id="home">
+    <div class="wrapper">
+        <h1>Home</h1>
+        <h2>Lorem ipsum dolor sit amet.</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta iusto sint laudantium reprehenderit perspiciatis repellat omnis blanditiis modi sequi quas. Dicta, optio exercitationem. Fugiat rem at vel nesciunt laboriosam ducimus!</p>    
+    </div>
+    </section>
+
+    <section id="about">
+      <div class="wrapper">
+      <h1>About</h1>
+      <h2>Lorem ipsum dolor sit amet.</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta iusto sint laudantium reprehenderit perspiciatis repellat omnis blanditiis modi sequi quas. Dicta, optio exercitationem. Fugiat rem at vel nesciunt laboriosam ducimus!</p>
+  </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrapper">
+    <h1>Skills</h1>
+    <h2>Lorem ipsum dolor sit amet.</h2>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta iusto sint laudantium reprehenderit perspiciatis repellat omnis blanditiis modi sequi quas. Dicta, optio exercitationem. Fugiat rem at vel nesciunt laboriosam ducimus!</p>
+</div>
+</section>
+
+<section id="works">
+        <div class="wrapper">
+        <h1>Works</h1>
+        <h2>Lorem ipsum dolor sit amet.</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta iusto sint laudantium reprehenderit perspiciatis repellat omnis blanditiis modi sequi quas. Dicta, optio exercitationem. Fugiat rem at vel nesciunt laboriosam ducimus!</p>
+    </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrapper">
+      <h1>Contact Me</h1>
+      <h2>Lorem ipsum dolor sit amet.</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta iusto sint laudantium reprehenderit perspiciatis repellat omnis blanditiis modi sequi quas. Dicta, optio exercitationem. Fugiat rem at vel nesciunt laboriosam ducimus!</p>
+  </div>
+  </section>
 
   <script>
     
@@ -121,6 +203,7 @@
         //addEventListener(이벤트, 실행함수 )
         btnToggle.addEventListener('click', function () {  
         document.body.classList.toggle('bgcolor--blue');
+        home.scrollIntoView({behavior: "smooth"});
         // console.log('test')
         //console.log(버튼클릭)
         });
@@ -128,14 +211,16 @@
         const btnReset=document.querySelector('.btn--reset');
         btnReset.addEventListener('click', function() {
             bgContainer.classList.remove('bg_img--show');
-            document.body.classList.remove('bgcolor--blue', 'bgcolor--gray', 'bg--img');
+            document.body.classList.remove('bgcolor--blue', 'bgcolor--gray', 'bg--img', 'bgcolor--green');
+            about.scrollIntoView({behavior: "smooth", block:"center"});
         });
 
 
         const btnBgGray=document.querySelector('.btn--bggray');
         btnBgGray.addEventListener('click', function() {
-            bgContainer.classList.remove('bg_img--show');
+            bgContainer.classList.remove('bg_img--show', 'bgcolor--green');
             document.body.classList.add('bgcolor--gray');
+            skills.scrollIntoView({behavior: "smooth", block:"center"});
         });
 
         const bgContainer=document.querySelector('.bg_img');
@@ -143,7 +228,18 @@
         btnBgImg.addEventListener('click', function() {
             // document.body.classList.add('bg--img');
             bgContainer.classList.add('bg_img--show');
+            bgContainer.classList.remove('bgcolor--blue', 'bgcolor--gray', 'bgcolor--green');
+            works.scrollIntoView({behavior: "smooth", block:"center"});    
         });
+
+        const btnBgGreen = document.querySelector('.btn--bggreen');
+        btnBgGreen.addEventListener('click', function (){
+          document.body.classList.add('bgcolor--green');
+          document.body.classList.remove('bgcolor--blue', 'bgcolor--gray', 'bg--img');
+            bgContainer.classList.remove('bg_img--show');
+            contact.scrollIntoView({behavior: "smooth", block:"center"});
+        });
+
 
         
         const navcontainer = document.querySelector('.btns')
