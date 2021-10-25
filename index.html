@@ -203,6 +203,7 @@ h3{
         //addEventListener(이벤트, 실행함수 )
         btnToggle.addEventListener('click', function () {  
         document.body.classList.toggle('bgcolor--blue');
+        document.body.classList.remove('bgcolor--gray', 'bg--img', 'bgcolor--green');
         home.scrollIntoView({behavior: "smooth"});
         // console.log('test')
         //console.log(버튼클릭)
